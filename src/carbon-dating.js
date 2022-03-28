@@ -22,12 +22,12 @@ const BANANA = 'banana';
 function dateSample(sampleActivity) {
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
-  
-  N = parseFloat(sampleActivity);
+
+  let N = parseFloat(sampleActivity);
   
   if (typeof(sampleActivity) != 'string' || !(/^[\d.]+$/.test(sampleActivity)) || N === NaN || N <=0 || N >=15 ) return false;
 
-  Y = Math.ceil(Math.log(MODERN_ACTIVITY / N) * HALF_LIFE_PERIOD / Math.LN2);
+  let Y = Math.ceil(Math.log(MODERN_ACTIVITY / N) * HALF_LIFE_PERIOD / Math.LN2);
 
   return Y;
 }
