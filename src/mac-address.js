@@ -18,7 +18,7 @@ function isMAC48Address(n) {
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 
-  let re = new RegExp('(([a-fA-F0-9]{2}[-]){5}[a-fA-F0-9]{2})','yd');
+  let re = new RegExp('(([a-fA-F0-9]{2}[-]){5}[a-fA-F0-9]{2})');
   return re.test(n);
 
 }
