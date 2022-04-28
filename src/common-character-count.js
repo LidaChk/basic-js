@@ -15,7 +15,7 @@ function getCommonCharacterCount(s1, s2) {
   
   let s3= s2;
   s1.split('').forEach( l => s3 = s3.replace(new RegExp(`[${l}]`),''));
-  describe('banana:', () => s1 + s2 + s3 );Jadina_0328
+  describe('banana:', () => s1 + s2 + s3 );
   return (s2.length - s3.length);  
 }
 
