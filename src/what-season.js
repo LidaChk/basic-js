@@ -19,20 +19,21 @@ function getSeason(date) {
   
   try {
 
-    if (!date) return ('Unable to determine the time of year!');
+    //if (!date) return ('Unable to determine the time of year!');
 
     const seasons = ['winter', 'spring', 'summer', 'autumn'];
-    myLog(date.getMonth(), Math.abs((date.getMonth() - 11) / 3));
-    return seasons[(Math.floor(Math.abs((date.getMonth() - 11) / 3)))];
+    myLog('banana: ' + date.getMonth() + ' ' + Math.abs((date.getMonth() - 11) / 3));
+    return seasons[(Math.floor((date.getMonth() - 1) / 3))];
   }
-  catch {
+  catch(e) {
+    myLog(e);
     throw ('Invalid date!')
   }
 }
 
 function myLog(content) {
   const fs = require('fs');
-    fs.writeFileSync('../src/my.log', content, { flag: 'a+' }, err => {});
+    fs.appendFile('my.log', content + '\n', { flag: 'a+' }, err => {});
 }
 
 module.exports = {
