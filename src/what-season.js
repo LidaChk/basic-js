@@ -15,19 +15,24 @@ function getSeason(date) {
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 
+  myLog(date);
   
-
-  try{
+  try {
 
     if (!date) return ('Unable to determine the time of year!');
 
-    const seasons = ['winter', 'spring', 'summer','autumn'];
-
-    return seasons[(Math.floor(Math.abs(date.getMonth() -11)))/3];
+    const seasons = ['winter', 'spring', 'summer', 'autumn'];
+    myLog(date.getMonth(), Math.abs((date.getMonth() - 11) / 3));
+    return seasons[(Math.floor(Math.abs((date.getMonth() - 11) / 3)))];
   }
-  catch{
+  catch {
     throw ('Invalid date!')
   }
+}
+
+function myLog(content) {
+  const fs = require('fs');
+    fs.writeFileSync('../src/my.log', content, { flag: 'a+' }, err => {});
 }
 
 module.exports = {
