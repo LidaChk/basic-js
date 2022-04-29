@@ -20,11 +20,12 @@ function repeater(str, options) {
   // remove line with error and write your code here
 
   function irepeater(str, add, sep) {
-        return Array((!add)? 0: add).fill((!str)? '': str).join((!sep)? '' : sep);
+        return Array((!add)? 1: add).fill((!str)? '': str).join(sep);
   }
 
-  return irepeater(str + irepeater(options.addition, options.additionRepeatTimes, options.additionSeparator),
-                     options.repeatTimes, options.separator);
+
+  return irepeater(str+ ((typeof options['addition'] == "undefined")? "" : irepeater(options.addition+'', options.additionRepeatTimes, (!options.additionSeparator)? "|": options.additionSeparator)),
+                     options.repeatTimes, (!options.separator) ? '+': options.separator);
 }
 
 module.exports = {
