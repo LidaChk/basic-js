@@ -1,3 +1,4 @@
+const { throws } = require('assert');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
@@ -12,28 +13,25 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  //throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
 
-  myLog(date);
-  
   try {
 
-    //if (!date) return ('Unable to determine the time of year!');
+    if (!date) return ('Unable to determine the time of year!');
+    if (!(date instanceof Date && !isNaN(date.valueOf()))) throw new Error('Invalid date!');
 
     const seasons = ['winter', 'spring', 'summer', 'autumn'];
-    myLog('banana: ' + date.getMonth() + ' ' + Math.abs((date.getMonth() - 11) / 3));
-    return seasons[(Math.floor((date.getMonth() - 1) / 3))];
+    let id = Math.floor((date.getMonth() + 1) / 3) % 4;
+
+    return seasons[id];
   }
-  catch(e) {
-    myLog(e);
-    throw ('Invalid date!')
+  catch (e) {
+    throw new Error('Invalid date!');
   }
 }
 
-function myLog(content) {
+function myLog(content, flag = 'a+') {
   const fs = require('fs');
-    fs.appendFile('my.log', content + '\n', { flag: 'a+' }, err => {});
+  fs.appendFile('my.log', content + '\n', { flag: 'a+' }, err => { });
 }
 
 module.exports = {
