@@ -8,21 +8,17 @@ const { NotImplementedError } = require('../extensions/index.js');
 
 
 const chainMaker = {
-  constructor() {
-    this.chain = [];
-  },
-  getLength() {
-    if (!this.chain) this.chain = [];
+
+  chain: [],
+  getLength: function () {
     return this.chain.length;
   },
-  addLink(value) {
-    if (!this.chain) this.chain = [];
+  addLink: function (value) {
     this.chain.push('( ' + value + ' )');
     return this;
 
   },
-  removeLink(position) {
-    if (!this.chain) this.chain = [];
+  removeLink: function (position) {
     if (!Number.isInteger(position) || position < 1 || position > this.chain.length) {
       this.finishChain();
       throw new Error('You can\'t remove incorrect link!');
@@ -30,13 +26,11 @@ const chainMaker = {
     this.chain.splice(position - 1, 1);
     return this;
   },
-  reverseChain() {
-    if (!this.chain) this.chain = [];
+  reverseChain: function () {
     this.chain.reverse();
     return this;
   },
-  finishChain() {
-    if (!this.chain) this.chain = [];
+  finishChain: function () {
     let res = (!this.chain[0]) ? '' : this.chain.join('~~');
     this.chain.splice(0, this.chain.length);
     return res;
